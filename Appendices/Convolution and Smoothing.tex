@@ -1,0 +1,76 @@
+\section{Convolution and Smoothing}\label{Appen.A}
+We introduce tools that will allow us to build smooth approximations to given functions. We shall adopt the notation $U_\varepsilon=\{x\in U:\rho(x,\partial U)>\varepsilon\}$, where $U$ is an open set in $\mathbb{R}^n$ and $\rho$ the distance over $\mathbb{R}^n$.
+\begin{definition}
+Define the \textbf{standard mollifier} $\eta\in C^\infty(\mathbb{R}^n)$ by 
+$$
+\eta \left( x \right) =\left\{ \begin{aligned}
+	C\exp \left( \frac{1}{\left| x \right|^2-1} \right),\ &\text{if}\ \left| x \right|<1\\
+	0,\ &\text{if}\ =\left| x \right|\ge 1,\\
+\end{aligned} \right. 
+$$
+the constant $C$ is selected so that $\int_{\mathbb{R}^n}\eta\mathrm{d}x=1$.
+\end{definition}
+Denote 
+$$
+\eta _{\varepsilon}=\frac{1}{\varepsilon ^n}\eta \left( \frac{x}{\varepsilon} \right) ,
+$$
+it is easy to verify the function $\eta_\varepsilon$ has the property 
+$$
+\int_{\mathbb{R} ^n}{\eta _{\varepsilon}\mathrm{d}x}=1,\hspace{0.5cm}\mathrm{supp}\eta _{\varepsilon}\subset B\left( 0,\varepsilon \right) .
+$$
+Now suppose $f:U\to\mathbb{R}^n$ is locally integrable, define its \textbf{mollification} $f^\varepsilon=\eta_\varepsilon*f$ in $U_\varepsilon$. That is, 
+\begin{equation}\label{A.1}
+f^{\varepsilon}\left( x \right) =\int_U{\eta _{\varepsilon}\left( x-y \right) f\left( y \right) \mathrm{d}y}=\int_{B\left( 0,\varepsilon \right)}{\eta _{\varepsilon}\left( y \right) f\left( x-y \right) \mathrm{d}y}.
+\end{equation}
+We claim $f^\varepsilon$ has the following properties: 
+\begin{theorem}
+Let $f^\varepsilon$ defined as \eqref{A.1}. Then \par
+(i) $f^\varepsilon\in C^\infty(U_\varepsilon)$.\par
+(ii) $f^\varepsilon\to f$ a.e. as $\varepsilon\to 0$.\par
+(iii) If $f\in C(U)$, then $f^\varepsilon\to f$ uniformly on compact subsets of $U$.\par
+(iv) If $1\le p<\infty$ and $f\in L_{\mathrm{loc}}^p(U)$, then $f^\varepsilon\to f$ in $L_{\mathrm{loc}}^p(U)$.
+\end{theorem}
+\begin{proof}
+(i) Note that $\eta_\varepsilon\in C^\infty$ and the property of convolution, we have $f^\varepsilon\in C^\infty(U)$.\par
+(ii) By Lebesgue point Theorem (see \cite{rudin_2015_real}), we have 
+\begin{equation}\label{A.2}
+\lim_{r\rightarrow 0} \fint_{B\left( x,r \right)}{\left| f\left( y \right) -f\left( x \right) \right|\mathrm{d}y}=0
+\end{equation}
+a.e. for all $x\in U$. Fix a point $x\in U$, we have 
+$$
+\begin{aligned}
+\left| f^{\varepsilon}\left( x \right) -f\left( x \right) \right|&=\left| \int_{B\left( x,r \right)}{\eta _{\varepsilon}\left( x-y \right) \cdot \left[ f\left( y \right) -f\left( x \right) \right] \mathrm{d}y} \right|
+\\
+&\le \frac{1}{\varepsilon ^n}\int_{B\left( x,r \right)}{\eta \left( \frac{x-y}{\varepsilon} \right) \cdot \left| f\left( y \right) -f\left( x \right) \right|\mathrm{d}y}
+\\
+&\le C\fint_{B\left( x,r \right)}{\left| f\left( y \right) -f\left( x \right) \right|\mathrm{d}y}\rightarrow 0
+\end{aligned}
+$$
+as $\varepsilon\to 0$.\par
+(iii) If $f\in C(U)$, suppose $V\subset\subset U$, take $V\subset\subset W\subset\subset U$, therefore $f$ is uniformly continuous on $W$ and hence \eqref{A.2} holds for all $x\in W$. Therefore by the preceding estimate we have $f^\varepsilon\to f$ uniformly on compact subsets of $U$.\par
+(iv) If $1\le p<\infty$ and $f\in L_{\mathrm{loc}}^p(U)$, choose $V\subset\subset W\subset\subset U$ as in (iii). We claim that 
+$$\|f^\varepsilon\|_{L^p(V)}\le\|f\|_{L^p(W)}.$$
+To see this, note that 
+$$
+\begin{aligned}
+\int_V{\left| f^{\varepsilon}\left( x \right) \right|^p\mathrm{d}x}&=\int_V{\left| \int_{B\left( x,\varepsilon \right)}{\eta _{\varepsilon}\left( x-y \right) f\left( y \right) \mathrm{d}y} \right|^p\mathrm{d}x}
+\\
+&\le \int_V{\left( \int_{B\left( x,\varepsilon \right)}{\eta _{\varepsilon}^{1-1/p}\left( x-y \right) \cdot \eta _{\varepsilon}^{1/p}\left( x-y \right) \cdot \left| f\left( y \right) \right|\mathrm{d}y} \right) ^p\mathrm{d}x}
+\\
+&\le \int_V{\left( \int_{B\left( x,\varepsilon \right)}{\eta _{\varepsilon}\left( x-y \right) \mathrm{d}y} \right) ^{p-1}\cdot \left( \int_{B\left( x,\varepsilon \right)}{\eta _{\varepsilon}\left( x-y \right) \cdot \left| f\left( y \right) \right|^p}\mathrm{d}y \right) \mathrm{d}x}
+\\
+&=\int_V{\left( \int_{B\left( x,\varepsilon \right)}{\eta _{\varepsilon}\left( x-y \right) \cdot \left| f\left( y \right) \right|^p}\mathrm{d}y \right) \mathrm{d}x}
+\\
+&\le \int_W{\left| f\left( y \right) \right|^p\mathrm{d}y\int_{B\left( y,\varepsilon \right)}{\eta _{\varepsilon}\left( x-y \right) \mathrm{d}x}}
+\\
+&=\int_W{\left| f\left( y \right) \right|^p\mathrm{d}y}
+\end{aligned}
+$$
+we $\varepsilon$ is sufficiently small. Now fix $V\subset\subset W\subset\subset U$, and choose $g\in C(W)$ such that 
+$$\|f-g\|_{L^p(W)}<\delta.$$
+Then 
+$$
+\left\| f^{\varepsilon}-f \right\| _{L^p\left( V \right)}\le \left\| f^{\varepsilon}-g^{\varepsilon} \right\| _{L^p\left( V \right)}+\left\| g^{\varepsilon}-g \right\| _{L^p\left( V \right)}+\left\| g-f \right\| _{L^p\left( V \right)}\le 2\delta +\left\| g^{\varepsilon}-g \right\| _{L^p\left( V \right)},
+$$
+therefore $f^\varepsilon\to f$ in $L_{\mathrm{loc}}^p(U)$ and the proof is finished.
+\end{proof}

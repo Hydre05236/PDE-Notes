@@ -400,3 +400,82 @@ $$
 \left\{ V_0,B\left( x_{1}^{0},\frac{r_1}{2} \right) ,\cdots ,B\left( x_{N}^{0},\frac{r_N}{2} \right) \right\} .
 $$
 Define $v=\sum_{i=0}^N\zeta_iv_i$. Then by an analogous argument of Theorem \ref{Thm4.3.2} we finished our proof.
+\subsection{Extensions}
+Our goal next is to extend functions in the Sobolev space $W^{1,p}(U)$ to become functions in the Sobolev space $W^{1,p}(\mathbb{R}^n)$. We suppose $1\le p\le\infty$.
+\begin{theorem}
+Assume $U$ is bounded and $\partial U$ is $C^1$. Select a bounded open set $V$ such that $U\subset\subset V$. Then there exists a bounded linear operator $E:W^{1,p}(U)\to W^{1,p}(\mathbb{R}^n)$ such that for each $u\in W^{1,p}(U)$,\par
+(i) $Eu=u$ a.e. in $U$,\par
+(ii) $Eu$ has a support within $V$,\par
+(iii) $\|Eu\|_{W^{1,p}(\mathbb{R}^n}\le C\|u\|_{W^{1,p}(U)}$, where the constant $C$ depends only on $p$, $U$ and $V$.
+\end{theorem}
+\begin{proof}
+Fix $x^0\in\partial U$. Since we may consider $U$ as a submanifold of $\mathbb{R}^n$, we therefore suppose $\partial U$ is flat near $x^0$ and lying in the plane $\{x_n=0\}$, or otherwise we may choose $\Phi$ with inverse $\Psi$ such that "straightens out $\partial U$ near $x^0$".\par
+\begin{figure}[htbp]
+    \center
+    \includegraphics[scale=0.29]{Image/straightening out.png}
+    \caption{Straightening Out the Boundary}
+\end{figure}
+Then we may assume there exists an open ball $B$, with center $x^0$ and radius $r$, such that 
+$$
+B^+=B\cap \left\{ x_n\ge 0 \right\} \subset \overline{U},\hspace{0.5cm}B^-=B\cap \left\{ x_n\le 0 \right\} \subset \mathbb{R} ^n\setminus U.
+$$
+We shall also suppose $u\in C^1(\overline{U})$ since by the approximation method we may use $C^\infty(\overline{U})$ functions to approximate $u$. We define 
+$$
+\overline{u}\left( x \right) =\left\{ \begin{aligned}
+	u\left( x \right) &,\ x\in B^+\\
+	-3u\left( x_1,\cdots ,x_{n-1},-x_n \right) +4u\left( x_1,\cdots ,x_{n-1},-\frac{x_n}{2} \right) &,\ x\in B^-\\
+\end{aligned} \right. 
+$$
+we claim $\overline{u}\in C^1(\overline{B})$. Since the only possible discontinuous place is $\{x_n=0\}$, we compute each partial derivatives on $\{x_n=0\}$. Let $u^+=\overline{u}\mid_{B^+}$ and $u^-=\overline{u}\mid_{B^-}$. Note that 
+$$
+u_{x_n}^{-}\left( x \right) =3u_{x_n}\left( x_1,\cdots ,x_{n-1},-x_n \right) -2u_{x_n}\left( x_1,\cdots ,x_{n-1},-\frac{x_n}{2} \right) ,
+$$
+therefore $u_{x_n}^{-}\mid_{\{x_n=0\}}=u_{x_n}$. Similarly we have $u_{x_i}^{-}\mid_{\{x_n=0\}}=u_{x_i}$ and hence $D^\alpha u^-\mid_{\{x_n=0\}}=D^\alpha u^+\mid_{\{x_n=0\}}$ for each $|\alpha|\le 1$, and so $\overline{u}\in C^1(\overline{B})$.\par
+Now we check the norm inequality. Note that 
+$$
+\begin{aligned}
+\left\| \overline{u} \right\| _{W^{1,p}\left( B \right)}^{p}&=\sum_{\left| \alpha \right|\le 1}{\int_B{\left| D^{\alpha}\overline{u} \right|^p\mathrm{d}x}}
+\\
+&\le \sum_{\left| \alpha \right|\le 1}{\left( \int_{B^+}{\left| D^{\alpha}\overline{u} \right|^p\mathrm{d}x}+\int_{B^-}{\left| D^{\alpha}\overline{u} \right|^p\mathrm{d}x} \right)}
+\\
+&=\sum_{\left| \alpha \right|\le 1}{\left( \int_{B^+}{\left| D^{\alpha}u \right|^p\mathrm{d}x}+\int_{B^-}{\left| D^{\alpha}\overline{u} \right|^p\mathrm{d}x} \right)}
+\\
+&=\sum_{\left| \alpha \right|\le 1}{\left( \int_{B^+}{\left| D^{\alpha}u \right|^p\mathrm{d}x}+\int_{B^-}{\left| -3D^{\alpha}u\left( x_1\cdots ,-x_n \right) +4D^{\alpha}u\left( x_1\cdots ,-\frac{x_n}{2} \right) \right|^p\mathrm{d}x} \right)}
+\\
+&\le \sum_{\left| \alpha \right|\le 1}{\left( \int_{B^+}{\left| D^{\alpha}u \right|^p\mathrm{d}x}+3\int_{B^-}{\left| D^{\alpha}u\left( x_1, \cdots ,-x_n \right) \right|^p\mathrm{d}x}+4\int_{B^-}{\left| D^{\alpha}u\left( x_1, \cdots ,-\frac{x_n}{2} \right) \right|^p\mathrm{d}x} \right)}
+\\
+&=\sum_{\left| \alpha \right|\le 1}{\left( \int_{B^+}{\left| D^{\alpha}u \right|^p\mathrm{d}x}+3\int_{B^+}{\left| D^{\alpha}u \right|^p\mathrm{d}x}+4\int_{B^+\cap \left\{ x_n\le \frac{r}{2} \right\}}{2^{-p}\cdot \left| D^{\alpha}u \right|^p\mathrm{d}x} \right)}
+\\
+&\le \sum_{\left| \alpha \right|\le 1}{\left( \int_{B^+}{\left| D^{\alpha}u \right|^p\mathrm{d}x}+\max \left\{ 3,2^{2-p} \right\} \cdot \int_{B^+}{\left| D^{\alpha}u \right|^p\mathrm{d}x} \right)}
+\\
+&\le C\sum_{\left| \alpha \right|\le 1}{\int_B{\left| D^{\alpha}u \right|^p\mathrm{d}x}}=C\left\| u \right\| _{W^{1,p}\left( B^+ \right)},
+\end{aligned}
+$$
+we therefore have 
+$$
+\left\| \overline{u} \right\| _{W^{1,p}\left( B \right)}\le C\left\| u \right\| _{W^{1,p}\left( B^+ \right)}.
+$$
+Now since $\partial U$ is $C^1$, we may use a partition of unity over $\partial U$ to extend our result to the global condition. To be explicit, suppose $\partial U\subset\bigcup_{i=1}^NW_i$. Choose $W_0$ such that $U\subset\bigcup_{i=0}^NW_i$ and suppose $\{\zeta_i\}_{i=0}^N$ be the associated partition of unity. Choose $x_i^0\in W_i$ and define $\overline{u}_i$ analogously. Now define $\overline{u}=\sum_{i=0}^N\zeta_i\overline{u}_i$, where $\overline{u}_0=u$. Therefore we have 
+$$
+\left\| \overline{u} \right\| _{W^{1,p}\left( \mathbb{R} ^n \right)}\le \left\| u \right\| _{W^{1,p}\left( U \right)}+\sum_{i=1}^N{\left\| \overline{u}_i \right\| _{W^{1,p}\left( B_i \right)}}\le \left\| u \right\| _{W^{1,p}\left( U \right)}+\sum_{i=1}^N{C_i\left\| u_i \right\| _{W^{1,p}\left( B_{i}^{+} \right)}}\le \max \left\{ 1,C_1,\cdots ,C_N \right\} \cdot \left\| u \right\| _{W^{1,p}\left( U \right)}.
+$$
+Therefore the norm inequality also holds. Furthermore we can arrange for the support of $\overline{u}$ to lie within $V\supset\supset U$.\par
+We henceforth define $Eu=\overline{u}$ and now we show that $E$ is a bounded linear operator. Observe that 
+$$
+E\left( u+v \right) =\overline{u+v}=\sum_{i=0}^N{\zeta _i\cdot \left( \overline{u+v} \right) _i}=\sum_{i=0}^N{\zeta _i\left( \overline{u}_i+\overline{v}_i \right)}=\sum_{i=0}^N{\zeta _i\overline{u}_i}+\sum_{i=0}^N{\zeta _i\overline{v}_i}=Eu+Ev
+$$
+and 
+$$
+E\left( ku \right) =\overline{ku}=\sum_{i=0}^N{\zeta _i\left( \overline{ku} \right) _i}=\sum_{i=0}^N{k\cdot \zeta _i\overline{u}_i}=k\sum_{i=0}^N{\zeta _i\overline{u}_i}=kEu,
+$$
+we have $E$ a linear operator. By the norm inequality we have $E$ is bounded. Therefore the proof is finished.
+\end{proof}
+\begin{note}\em
+We shall call $Eu$ an \textbf{extension} of $u$ to $\mathbb{R}^n$.\par
+Assume now $\partial U$ is in $C^2$. Then the extension operator $E$ constructed above is also a bounded linear operator from $W^{2,p}(U)$ to $W^{2,p}(\mathbb{R}^n)$ since the reflection $\overline{u}$ lies in $W^{2,p}(B)$. We also have the norm inequality 
+$$
+\left\| Eu \right\| _{W^{2,p}\left( \mathbb{R} ^n \right)}^{p}\le C\left\| u \right\| _{W^{1,p}\left( U \right)}
+$$
+with $C$ only dependent on $n$, $p$, $U$ and $V$.\par
+Note however, if $k>2$, then the construction before does not provide us an extension in $W^{k,p}(U)$. This requires a more complicated higher-order reflection principle and we shall first put it aside. 
+\end{note}

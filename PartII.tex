@@ -320,7 +320,7 @@ $$
 $$
 Therefore $u_m\to u\in W^{k,p}(U)$ and hence $W^{k,p}(U)$ is complete. Therefore $W^{k,p}(U)$ is a Banach space.
 \end{proof}
-\subsection{Approximation}
+\subsection{Approximation}\label{Sec4.3}
 In this section we shall set up a series of approximations on functions in Sobolev spaces. For $U\subset\mathbb{R}^n$, we shall always denote $U_\varepsilon=\{x\in U:\rho(x,\partial U)>\varepsilon\}$, where $\rho$ is the metric over $\mathbb{R}^n$.
 \begin{theorem}
 Assume that $u\in W^{k,p}(U)$ for some $1\le p<\infty$, and set $u^\varepsilon=\eta_\varepsilon*u$ in $U_\varepsilon$. Then $u^\varepsilon\in C^\infty(U_\varepsilon)$ for each $\varepsilon>0$ and $u^\varepsilon\to u$ in $W_{\mathrm{loc}}^{k,p}(U)$ as $\varepsilon\to 0$.
@@ -402,7 +402,7 @@ $$
 Define $v=\sum_{i=0}^N\zeta_iv_i$. Then by an analogous argument of Theorem \ref{Thm4.3.2} we finished our proof.
 \subsection{Extensions}
 Our goal next is to extend functions in the Sobolev space $W^{1,p}(U)$ to become functions in the Sobolev space $W^{1,p}(\mathbb{R}^n)$. We suppose $1\le p\le\infty$.
-\begin{theorem}
+\begin{theorem}\label{4.4.1}
 Assume $U$ is bounded and $\partial U$ is $C^1$. Select a bounded open set $V$ such that $U\subset\subset V$. Then there exists a bounded linear operator $E:W^{1,p}(U)\to W^{1,p}(\mathbb{R}^n)$ such that for each $u\in W^{1,p}(U)$,\par
 (i) $Eu=u$ a.e. in $U$,\par
 (ii) $Eu$ has a support within $V$,\par
@@ -479,3 +479,83 @@ $$
 with $C$ only dependent on $n$, $p$, $U$ and $V$.\par
 Note however, if $k>2$, then the construction before does not provide us an extension in $W^{k,p}(U)$. This requires a more complicated higher-order reflection principle and we shall first put it aside. 
 \end{note}
+\subsection{Traces}
+Next we discuss the possibility of assigning "boundary values" along $\partial U$ to a function $u\in W^{1,p}(U)$, assuming that $\partial U$ is $C^1$. Now if $u\in C(\overline{U})$, then clearly $u$ has values on $\partial U$ in the usual sense. The problem is that a typical function $u\in W^{1,p}(U)$ is not in general continuous and, even worse, is only defined a.e. in $U$. Since $\partial U$ has $n$-dimensional measure zero, there is no direct meaning we can give to the expression "$u$ restricted to $\partial U$". The notion of a \textbf{trace operator} resolves this problem.\par
+For this section we assume $1\le p<\infty$.
+\begin{theorem}
+Assume $U$ is bounded and $\partial U$ is $C^1$. Then there exists a bounded linear operator $T:W^{1,p}(U)\to L^p(\partial U)$ such that \par
+(i) $Tu=u\mid_{\partial U}$ if $u\in W^{1,p}(U)\cap C(\overline{U})$;\par
+(ii) $\|Tu\|_{L^p(\partial U)}\le C\|u\|_{W^{1,p}(U)}$ for each $u\in W^{1,p}(U)$, with the constant $C$ depending only on $p$ and $U$.
+\end{theorem}
+\begin{proof}
+We first assume that $u\in C^1(\overline{U})$. As in the proof of Theorem \ref{4.4.1}, we first choose $x^0\in\partial U$ and suppose $\partial U$ is flat near $x^0$. Define analogous $B=B(x^0,r)$ and let $\widehat{B}=B(x^0,r/2)$. Choose $\zeta\in C_c^\infty(B)$ with $\zeta\ge 0$ over $B$, $\zeta=1$ over $\widehat{B}$. Denote $\Gamma=\partial U\cap\widehat{B}$, $x^\prime=(x_1,\cdots,x_{n-1})\in\mathbb{R}^{n-1}=\{x_n=0\}$, therefore we have the estimate 
+$$
+\begin{aligned}
+\int_{\Gamma}{\left| u \right|^p\mathrm{d}x^{\prime}}\le &\int_{\left\{ x_n=0 \right\}}{\zeta \cdot \left| u \right|^p\mathrm{d}x^{\prime}}=\int_{B^+\cap \left\{ x_n=0 \right\}}{\mathrm{d}x^{\prime}\int_{B^+\setminus \left\{ x_n=0 \right\}}{\left( \zeta \cdot \left| u \right|^p \right) _{x_n}\mathrm{d}x^{\prime}\mathrm{d}x_n}}
+\\
+&=-\int_{B^+\cap \left\{ x_n=0 \right\}}{\left( \zeta \cdot \left| u \right|^p \right) _{x_n}\mathrm{d}x}=-\int_{B^+}{\left( \zeta \cdot \left| u \right|^p \right) _{x_n}\mathrm{d}x}
+\\
+&=-\int_{B^+}{\left( \zeta _{x_n}\cdot \left| u \right|^p+\zeta \cdot p\left| u \right|^{p-1}\mathrm{sgn} \left( u \right) \cdot u_{x_n} \right) \mathrm{d}x}
+\\
+&\le -\int_{B^+}{\left[ \zeta _{x_n}\cdot \left| u \right|^p+p\mathrm{sgn} \left( u \right) \cdot \zeta \cdot C_1\left( \left| u \right|^{q\left( p-1 \right)}+\left| u_{x_n} \right|^p \right) \right] \mathrm{d}x}
+\\
+&\le C\int_{B^+}{\left( \left| u \right|^p+\left| Du \right|^p \right) \mathrm{d}x}.
+\end{aligned}
+$$
+Now since $\partial U$ is compact, we may choose a finite set of segments $\{\Gamma_i\}_{i=1}^N$ such that $\partial U\subset\bigcup_{i=1}^N\Gamma_i$. Now for each $\Gamma_i$ by the preceding estimate we have 
+$$
+\left\| u \right\| _{L^p\left( \Gamma _i \right)}\le C\left\| u \right\| _{W^{1,p}\left( U \right)},\hspace{0.5cm}\left( i=1,2,\cdots ,N \right) 
+$$
+consequently if we write $Tu=u\mid\partial_U$, then 
+$$
+\left\| Tu \right\| _{L^p\left( \partial U \right)}\le C\left\| u \right\| _{W^{1,p}\left( U \right)}
+$$
+for some appropriate constant $C$, which does not depend on $u$. To finish the proof, us a sequence of $u_m\in C^\infty(\overline{U})$ to approximate $u$ as in Section \ref{Sec4.3}.
+\end{proof}
+We next examine more closely what it means for a function to have zero trace. The reader may skip the proof of the theorem on his first reading and turn back when we study the space $W_0^{1,p}(U)$ more carefully.
+\begin{theorem}
+Assume $U$ is bounded and $\partial U$ is $C^1$. Suppose furthermore that $u\in W^{1,p}(U)$. Then $u\in W^{1,p}(U)$ if and only if $Tu=0$ on $\partial U$.
+\end{theorem}
+\begin{proof}
+Suppose first $u\in W_0^{1,p}(U)$. Then we may use a sequence of $C_c^\infty(U)$ functions to approximate $u$. Suppose $u_m\in C_c^\infty(U)$ and $u_m\to u$ in $W^{1,p}(U)$, then trivially $Tu_m=0$. Since $T$ is a bounded linear operator, we have $Tu=0$ on $\partial U$.\par
+Conversely, assume that $Tu=0$ on $\partial U$. We may assume $u\in W^{1,p}(\mathbb{R}_+^n)$ where $u$ has a compact support in $\overline{\mathbb{R}_+^n}$ and $Tu=0$ on $\partial\mathbb{R}_+^n=\mathbb{R}^{n-1}$ with a standard flattening, approximation on the boundary and partitions of unity, which we omit the details. Now since $Tu=0$ on $\mathbb{R}^{n-1}$, there exists a sequence of $u_m\in C^1(\overline{\mathbb{R}_+^n})$ such that $u_m\to u$ in $W^{1,p}(\mathbb{R}_+^n)$ and $Tu_m\to 0$. Now we note the following estimate: 
+$$
+\begin{aligned}
+\int_{\mathbb{R} ^{n-1}}{\left| u_m\left( x^{\prime},x_n \right) \right|^p\mathrm{d}x^{\prime}}&=\int_{\mathbb{R} ^{n-1}}{\left| u_m\left( x^{\prime},0 \right) +\int_0^{x_n}{u_{m,x_n}\left( x^{\prime},t \right) \mathrm{d}t} \right|^p\mathrm{d}x^{\prime}}
+\\
+&\le \int_{\mathbb{R} ^{n-1}}{\left( \left| u_m\left( x^{\prime},0 \right) \right|+\int_0^{x_n}{\left| u_{m,x_n}\left( x^{\prime},t \right) \right|\mathrm{d}t} \right) ^p\mathrm{d}x^{\prime}}
+\\
+&\le 2^{p-1}\int_{\mathbb{R} ^{n-1}}{\left[ \left| u_m\left( x^{\prime},0 \right) \right|^p+\left( \int_0^{x_n}{\left| \frac{\partial}{\partial x_n}u_m\left( x^{\prime},t \right) \right|\mathrm{d}t} \right) ^p \right] \mathrm{d}x^{\prime}}
+\\
+&\le 2^{p-1}\int_{\mathbb{R} ^{n-1}}{\left[ \left| u_m\left( x^{\prime},0 \right) \right|^p+\left( \int_0^{x_n}{1^{\frac{p}{p-1}}\mathrm{d}t} \right) ^{p-1}\cdot \left( \int_0^{x_n}{\left| \frac{\partial}{\partial x_n}u_m\left( x^{\prime},t \right) \right|^p\mathrm{d}t} \right) \right] \mathrm{d}x^{\prime}}
+\\
+&=2^{p-1}\int_{\mathbb{R} ^{n-1}}{\left[ \left| u_m\left( x^{\prime},0 \right) \right|^p+x_{n}^{p-1}\int_0^{x_n}{\left| \frac{\partial}{\partial x_n}u_m\left( x^{\prime},t \right) \right|^p\mathrm{d}t} \right] \mathrm{d}x^{\prime}}
+\\
+&\le C\left( \int_{\mathbb{R} ^{n-1}}{\left| u_m\left( x^{\prime},0 \right) \right|^p\mathrm{d}x^{\prime}}+x_{n}^{p-1}\int_0^{x_n}{\mathrm{d}t\int_{\mathbb{R} ^{n-1}}{\left| Du \right|^p\mathrm{d}x^{\prime}}} \right) ,
+\end{aligned}
+$$
+where the second inequality follows from the Young's inequality and the third inequality follows from Holder's inequality. Letting $m\to\infty$ we have 
+$$
+\int_{\mathbb{R} ^{n-1}}{\left| u_m\left( x^{\prime},x_n \right) \right|^p\mathrm{d}x^{\prime}}\le Cx_{n}^{p-1}\int_0^{x_n}{\mathrm{d}t\int_{\mathbb{R} ^{n-1}}{\left| Du \right|^p\mathrm{d}x^{\prime}}}
+$$
+for a.e. $x_n>0$.\par
+Next let $\zeta\in C^\infty(\mathbb{R}_+)$ satisfy $\zeta\equiv 1$ on $[0,1]$, $\zeta\equiv 0$ on $\mathbb{R}_+\setminus[0,2]$, and $0\le\zeta\le 1$. Define 
+$$
+\zeta _m\left( x \right) =\zeta \left( mx_n \right) ;\hspace{0.5cm}w_m=u\left( x \right) \left( 1-\zeta _m\left( x \right) \right) ,
+$$
+then 
+$$
+\frac{\partial w_m}{\partial x_n}=u_{x_n}\left( 1-\zeta _m \right) -m\cdot u\zeta ^{\prime},\hspace{0.5cm}D_{x^{\prime}}w_m=D_{x^{\prime}}u\left( 1-\zeta _m \right) .
+$$
+Consequently 
+$$
+\begin{aligned}
+\int_{\mathbb{R} _{+}^{n}}{\left| Dw_m-Du \right|^p\mathrm{d}x}&\le C\int_{\mathbb{R} _{+}^{n}}{\left| \zeta _m \right|^p\cdot \left| Du \right|^p\mathrm{d}x}+Cm^p\int_0^{\frac{2}{m}}{\mathrm{d}t\int_{\mathbb{R} ^{n-1}}{\left| u \right|^p\mathrm{d}x^{\prime}}}
+\\
+&\le C\int_{\mathbb{R} _{+}^{n}}{\left| \zeta _m \right|^p\cdot \left| Du \right|^p\mathrm{d}x}+Cm^p\left( \int_0^{\frac{2}{m}}{t^{p-1}\mathrm{d}t} \right) \left( \int_0^{\frac{2}{m}}{\mathrm{d}x_n\int_{\mathbb{R} ^{n-1}}{\left| Du \right|^p\mathrm{d}x^{\prime}}} \right) 
+\\
+&\le C\left( \int_{\mathbb{R} _{+}^{n}}{\left| \zeta _m \right|^p\cdot \left| Du \right|^p\mathrm{d}x}+\int_0^{\frac{2}{m}}{\mathrm{d}x_n\int_{\mathbb{R} ^{n-1}}{\left| Du \right|^p\mathrm{d}x^{\prime}}} \right) \rightarrow 0,
+\end{aligned}
+$$
+which implies $Dw_n\to Du$ in $L^p(\mathbb{R}_+^n)$. Since trivially $w_n\to u$ in $L^p(\mathbb{R}_+^n)$, we have $w_n\to u$ in $W^{1,p}(\mathbb{R}_+^n)$, which implies $u\in W^{1,p}_0(\mathbb{R}_+^n)$ by mollifying $w_m$ to produce functions $u_m\in C_c^\infty(\mathbb{R}_+^n)$.
+\end{proof}

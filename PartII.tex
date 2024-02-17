@@ -559,3 +559,144 @@ $$
 $$
 which implies $Dw_n\to Du$ in $L^p(\mathbb{R}_+^n)$. Since trivially $w_n\to u$ in $L^p(\mathbb{R}_+^n)$, we have $w_n\to u$ in $W^{1,p}(\mathbb{R}_+^n)$, which implies $u\in W^{1,p}_0(\mathbb{R}_+^n)$ by mollifying $w_m$ to produce functions $u_m\in C_c^\infty(\mathbb{R}_+^n)$.
 \end{proof}
+\subsection{Sobolev Inequalities}
+Our goal in this section is to discover embeddings of various Sobolev spaces into others. The crucial analytic tools here will be certain so-called "Sobolev-type inequalities", which we will prove below for smooth functions. These will then establish the estimates for arbitrary functions in the various relevant Sobolev spaces, since, as we saw in Section \ref{Sec4.3}, smooth functions are dense.\par
+To clarify the presentation we shall first consider the Sobolev space $W^{1,p}(U)$ and ask the following question: \textit{If a function $u$ belong to $W^{1,p}(U)$, does it automatically belong to certain other spaces}? The answer will be "yes", but which will depend upon whether $1\le p<n$ or $p=n$ or $n<p\le\infty$. We shall study the first two conditions in this section.\par
+Let's first concern $1\le p<n$, and first ask whether we can establish an estimate of the form 
+\begin{equation}\label{4.3}
+\left\| u \right\| _{L^q\left( \mathbb{R} ^n \right)}\le C\left\| Du \right\| _{L^p\left( \mathbb{R} ^n \right)}
+\end{equation}
+for certain constants $C>0$, $1\le q<\infty$ and all functions $u\in C_c^\infty(\mathbb{R}^n)$. The point is that the constants $C$ and $q$ should not depend on $u$. It turns out to be that $q$ cannot be arbitrary but must in fact has a very special form. To see this, choose $u\in C_c^\infty(\mathbb{R}^n)$, $u\not\equiv 0$, and define $u_\lambda(x)=u(\lambda x)$. Then apply the inequality \eqref{4.3}, we obtain 
+\begin{equation}\label{4.4}
+\left\| u_{\lambda} \right\| _{L^q\left( \mathbb{R} ^n \right)}\le C\left\| Du_{\lambda} \right\| _{L^p\left( \mathbb{R} ^n \right)}.
+\end{equation}
+However note that 
+$$
+\int_{\mathbb{R} ^n}{\left| u_{\lambda}\left( x \right) \right|^q\mathrm{d}x}=\int_{\mathbb{R} ^n}{\left| u\left( \lambda x \right) \right|^q\mathrm{d}x}=\frac{1}{\lambda ^n}\int_{\mathbb{R} ^n}{\left| u\left( y \right) \right|^q\mathrm{d}y}
+$$
+and 
+$$
+\int_{\mathbb{R} ^n}{\left| Du_{\lambda} \right|^p\mathrm{d}x}=\lambda ^p\int_{\mathbb{R} ^n}{\left| Du\left( \lambda x \right) \right|^p\mathrm{d}x}=\frac{\lambda ^p}{\lambda ^n}\int_{\mathbb{R} ^n}{\left| Du\left( y \right) \right|^p\mathrm{d}y},
+$$
+we may rewrite \eqref{4.4} into 
+$$
+\left\| u_{\lambda} \right\| _{L^q\left( \mathbb{R} ^n \right)}\le C\lambda ^{1-\frac{n}{p}+\frac{n}{q}}\left\| Du_{\lambda} \right\| _{L^p\left( \mathbb{R} ^n \right)}.
+$$
+Since $\lambda$ is arbitrary, we therefore conclude that $1-\frac{n}{p}+\frac{n}{q}=0$, which motivates the following definition.
+\begin{definition}
+If $1\le q<n$, the \textbf{Sobolev conjugate} of $p$ is defined to be 
+$$
+p^*=\frac{np}{n-p},
+$$
+which satisfies 
+$$
+\frac{1}{p^*}=\frac{1}{p}-\frac{1}{n},\hspace{0.5cm}p^*>p.
+$$
+\end{definition}
+The forgoing scaling analysis shows that the estimate \eqref{4.3} can only possibly be true for $q=p^*$. Now we prove this inequality is in fact valid.
+\begin{theorem}{\textbf{(Gagliardo-Nirenberg-Sobolev inequality)}}\label{Thm4.6.2}
+Assume $1\le p<n$. There exists a constant $C$, depending only on $p$ and $n$, such that 
+$$
+\left\| u_{\lambda} \right\| _{L^{p^*}\left( \mathbb{R} ^n \right)}\le C\lambda ^{1-\frac{n}{p}+\frac{n}{q}}\left\| Du_{\lambda} \right\| _{L^p\left( \mathbb{R} ^n \right)}
+$$
+for all $u\in C_c^1(\mathbb{R}^n)$.
+\end{theorem}
+\begin{proof}
+Since $u$ has compact support, we may first obtain 
+\begin{equation}\label{4.5}
+\begin{aligned}
+\left| u\left( x \right) \right|^{\frac{n}{n-1}}&=\prod_{i=1}^n{\left| u\left( x \right) \right|^{\frac{1}{n-1}}}=\prod_{i=1}^n{\left| \int_{-\infty}^{x_i}{u_{x_i}\left( x_1,\cdots ,x_{i-1},y_i,x_{i+1},\cdots ,x_n \right) \mathrm{d}y_i} \right|^{\frac{1}{n-1}}}
+\\
+&\le \prod_{i=1}^n{\left( \int_{-\infty}^{x_i}{\left| u_{x_i}\left( x_1,\cdots ,x_{i-1},y_i,x_{i+1},\cdots ,x_n \right) \right|\mathrm{d}y_i} \right) ^{\frac{1}{n-1}}}
+\\
+&\le \prod_{i=1}^n{\left( \int_{-\infty}^{+\infty}{\left| Du\left( x_1,\cdots ,x_{i-1},y_i,x_{i+1},\cdots ,x_n \right) \right|\mathrm{d}y_i} \right) ^{\frac{1}{n-1}}}.
+\end{aligned}
+\end{equation}
+For convenience we shall now denote $\widehat{x}_i=(x_1,\cdots,x_{i-1},y_i,x_{i+1},\cdots,x_n)$. Integrating the inequality \eqref{4.5} on both side, we obtain 
+$$
+\begin{aligned}
+\int_{-\infty}^{+\infty}{\left| u\left( x \right) \right|^{\frac{n}{n-1}}\mathrm{d}x_1}&\le \int_{-\infty}^{+\infty}{\prod_{i=1}^n{\left( \int_{-\infty}^{+\infty}{\left| Du\left( \widehat{x}_i \right) \right|\mathrm{d}y_i} \right) ^{\frac{1}{n-1}}\mathrm{d}x_1}}
+\\
+&=\left( \int_{-\infty}^{+\infty}{\left| Du\left( \widehat{x}_1 \right) \right|\mathrm{d}y_1} \right) ^{\frac{1}{n-1}}\cdot \left( \int_{-\infty}^{+\infty}{\prod_{i=2}^n{\left( \int_{-\infty}^{+\infty}{\left| Du\left( \widehat{x}_i \right) \right|\mathrm{d}y_i} \right) ^{\frac{1}{n-1}}\mathrm{d}x_1}} \right) 
+\\
+&\le \left( \int_{-\infty}^{+\infty}{\left| Du\left( \widehat{x}_1 \right) \right|\mathrm{d}y_1} \right) ^{\frac{1}{n-1}}\cdot \left( \prod_{i=2}^n{\int_{-\infty}^{+\infty}{\int_{-\infty}^{+\infty}{\left| Du\left( \widehat{x}_i \right) \right|\mathrm{d}x_1\mathrm{d}y_i}}} \right) ,
+\end{aligned}
+$$
+where the last inequality follows from Holder's inequality. Now integrate on both side again to obtain 
+\begin{small}
+$$
+\int_{-\infty}^{+\infty}{\int_{-\infty}^{+\infty}{\left| u\left( x \right) \right|^{\frac{n}{n-1}}\mathrm{d}x_1}\mathrm{d}x_2}\le \left( \int_{-\infty}^{+\infty}{\int_{-\infty}^{+\infty}{\left| Du\left( \widehat{x}_1 \right) \right|\mathrm{d}y_1}\mathrm{d}x_2} \right) ^{\frac{1}{n-1}}\left( \int_{-\infty}^{+\infty}{\int_{-\infty}^{+\infty}{\left| Du\left( \widehat{x}_2 \right) \right|\mathrm{d}x_1}\mathrm{d}y_2} \right) ^{\frac{1}{n-1}}\left( \prod_{i=3}^n{\int_{-\infty}^{+\infty}{\int_{-\infty}^{+\infty}{\int_{-\infty}^{+\infty}{\left| Du\left( \widehat{x}_i \right) \right|\mathrm{d}x_1\mathrm{d}x_2\mathrm{d}y_i}}}} \right) ^{\frac{1}{n-1}}.
+$$
+\end{small}
+Therefore integrate on both side of the inequality we eventually obtain 
+$$
+\int_{\mathbb{R} ^n}{\left| u\left( x \right) \right|^{\frac{n}{n-1}}\mathrm{d}x}\le \prod_{i=1}^n{\left( \int_{-\infty}^{+\infty}{\cdots \int_{-\infty}^{+\infty}{\left| Du\left( \widehat{x}_i \right) \right|\mathrm{d}x_1\cdots \mathrm{d}x_{i-1}\mathrm{d}y_i\mathrm{d}x_{i+1}\cdots \mathrm{d}x_n}} \right) ^{\frac{1}{n-1}}}=\left( \int_{\mathbb{R} ^n}{\left| Du\left( x \right) \right|\mathrm{d}x} \right) ^{\frac{n}{n-1}},
+$$
+which finished the proof for $p=1$. Now for $p>1$, we consider $v=|u|^\gamma$, where $\gamma$ is to be selected. Then 
+$$
+\left( \int_{\mathbb{R} ^n}{\left| u \right|^{\frac{\gamma n}{n-1}}\mathrm{d}x} \right) ^{\frac{n-1}{n}}\le \int_{\mathbb{R} ^n}{\left| D\left| u \right|^{\gamma} \right|\mathrm{d}x}=\gamma \int_{\mathbb{R} ^n}{\left| u \right|^{\gamma -1}\left| Du \right|\mathrm{d}x}\le \gamma \left( \int_{\mathbb{R} ^n}{\left| u \right|^{\frac{p\left( \gamma -1 \right)}{p-1}}} \right) ^{\frac{p-1}{p}}\left( \int_{\mathbb{R} ^n}{\left| Du \right|^p\mathrm{d}x} \right) ^{\frac{1}{p}}.
+$$
+We choose $\gamma$ such that $\frac{\gamma n}{n-1}=\frac{p(\gamma-1)}{p-1}$, i.e. we set 
+$$
+\gamma =\frac{p\left( n-1 \right)}{n-p}>1,
+$$
+in which case our inequality becomes 
+$$
+\left( \int_{\mathbb{R} ^n}{\left| u \right|^{p^*}\mathrm{d}x} \right) ^{\frac{1}{p^*}}\le C\left( \int_{\mathbb{R} ^n}{\left| Du \right|^p\mathrm{d}x} \right) ^{\frac{1}{p}}.
+$$
+This completes the proof of the theorem.
+\end{proof}
+\begin{theorem}
+Let $U$ be a bounded, open subset of $\mathbb{R}^n$, and suppose $\partial U$ is $C^1$. Assume $1\le p<n$, and $u\in W^{1,p}(U)$. Then $u\in L^{p^*}(U)$, with the estimate 
+$$
+\left\| u \right\| _{L^{p^*}\left( U \right)}\le C\left\| u \right\| _{W^{1,p}\left( U \right)},
+$$
+the constant $C$ depending only on $p$, $n$ and $U$.
+\end{theorem}
+\begin{proof}
+Since $\partial U$ is $C^1$, we may extend $u\in W^{1,p}(U)$ onto $\overline{u}\in W^{1,p}(\mathbb{R}^n)$ such that $\overline{u}\mid_{U}=u$, $\overline{u}$ has compact support and 
+$$
+\left\| \overline{u} \right\| _{W^{1,p}\left( \mathbb{R} ^n \right)}\le C\left\| u \right\| _{W^{1,p}\left( U \right)}.
+$$
+Now by Section \ref{Sec4.3} we know that there exists a sequence of $u_m\in C_c^\infty(\mathbb{R}^n)$ such that $u_m\to\overline{u}$ in $W^{1,p}(\mathbb{R}^n)$. Now according to Theorem \ref{Thm4.6.2} we have 
+$$
+\left\| u_m-u_n \right\| _{L^{p^*}\left( \mathbb{R} ^n \right)}\le \left\| Du_m-Du_n \right\| _{L^p\left( \mathbb{R} ^n \right)},
+$$
+and hence $u_m\to\overline{u}$ also in $L^{p^*}(\mathbb{R}^n)$. Since Theorem \ref{Thm4.6.2} also implies 
+$$
+\left\| u_m \right\| _{L^{p^*}\left( \mathbb{R} ^n \right)}\le C\left\| Du_m \right\| _{L^p\left( \mathbb{R} ^n \right)},
+$$
+this inequality and the properties of the extension operator completes the proof.
+\end{proof}
+\begin{theorem}
+Assume $U$ is a bounded, open subset of $\mathbb{R}^n$. Suppose $u\in W_0^{1,p}(U)$ for some $1\le p<n$. Then we have the estimate 
+\begin{equation}\label{4.6}
+\left\| u \right\| _{L^q\left( U \right)}\le C\left\| Du \right\| _{L^p\left( U \right)}
+\end{equation}
+for each $q\in [1,p^*]$. The constant $C$ depending only on $p$, $q$, $n$ and $U$. In particular, for all $1\le p\le\infty$, we have 
+$$
+\left\| u \right\| _{L^p\left( U \right)}\le C\left\| Du \right\| _{L^p\left( U \right)}.
+$$
+\end{theorem}
+\begin{proof}
+Since $u\in W_0^{1,p}(U)$, there exist functions $u_m\in C_c^\infty(U)$ converging to $u$ in $W^{1,p}(U)$. We extend each function $u_m$ to be zero on $\mathbb{R}^n\setminus\overline{U}$ and apply Theorem \ref{Thm4.6.2} to obtain 
+$$
+\left\| u \right\| _{L^{p^*}\left( U \right)}\le C\left\| Du \right\| _{L^p\left( U \right)}.
+$$
+Now since $m(U)<\infty$, we have 
+$$
+\left\| u \right\| _{L^q\left( U \right)}^{q}=\int_U{\left| u \right|^q\mathrm{d}x}\le \left( \int_U{\left| u \right|^{q\cdot \frac{p^*}{q}}\mathrm{d}x} \right) ^{\frac{q}{p^*}}\cdot \left( \int_U{1^r\mathrm{d}x} \right) ^{\frac{1}{r}}=C^q\left( \int_U{\left| u \right|^{p^*}\mathrm{d}x} \right) ^{\frac{q}{p^*}},
+$$
+whence 
+$$
+\left\| u \right\| _{L^q\left( U \right)}=\left( \int_U{\left| u \right|^q\mathrm{d}x} \right) ^{\frac{1}{q}}\le C\left( \int_U{\left| u \right|^{p^*}\mathrm{d}x} \right) ^{\frac{1}{p^*}}=C\left\| u \right\| _{L^{p^*}\left( U \right)},
+$$
+and therefore 
+$$
+\left\| u \right\| _{L^q\left( U \right)}\le C^{\prime}\left\| u \right\| _{L^{p^*}\left( U \right)}\le C\left\| Du \right\| _{L^p\left( U \right)}
+$$
+provided $1\le q\le p^*$.
+\end{proof}
+\begin{note}\em
+The estimate \eqref{4.6} is sometimes called the \textbf{Poincare's inequality}. In view of this estimate, on $W_0^{1,p}(U)$ the norm $\|Du\|_{L^p(U)}$ is equivalent to $\|u\|_{W^{1,p}(U)}$ if $U$ is bounded.
+\end{note}

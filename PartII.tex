@@ -559,7 +559,7 @@ $$
 $$
 which implies $Dw_n\to Du$ in $L^p(\mathbb{R}_+^n)$. Since trivially $w_n\to u$ in $L^p(\mathbb{R}_+^n)$, we have $w_n\to u$ in $W^{1,p}(\mathbb{R}_+^n)$, which implies $u\in W^{1,p}_0(\mathbb{R}_+^n)$ by mollifying $w_m$ to produce functions $u_m\in C_c^\infty(\mathbb{R}_+^n)$.
 \end{proof}
-\subsection{Sobolev Inequalities}
+\subsection{Sobolev Inequalities}\label{Sec4.6}
 Our goal in this section is to discover embeddings of various Sobolev spaces into others. The crucial analytic tools here will be certain so-called "Sobolev-type inequalities", which we will prove below for smooth functions. These will then establish the estimates for arbitrary functions in the various relevant Sobolev spaces, since, as we saw in Section \ref{Sec4.3}, smooth functions are dense.\par
 To clarify the presentation we shall first consider the Sobolev space $W^{1,p}(U)$ and ask the following question: \textit{If a function $u$ belong to $W^{1,p}(U)$, does it automatically belong to certain other spaces}? The answer will be "yes", but which will depend upon whether $1\le p<n$ or $p=n$ or $n<p\le\infty$. We shall study the first two conditions in this section.\par
 Let's first concern $1\le p<n$, and first ask whether we can establish an estimate of the form 
@@ -597,7 +597,7 @@ The forgoing scaling analysis shows that the estimate \eqref{4.3} can only possi
 \begin{theorem}{\textbf{(Gagliardo-Nirenberg-Sobolev inequality)}}\label{Thm4.6.2}
 Assume $1\le p<n$. There exists a constant $C$, depending only on $p$ and $n$, such that 
 $$
-\left\| u_{\lambda} \right\| _{L^{p^*}\left( \mathbb{R} ^n \right)}\le C\lambda ^{1-\frac{n}{p}+\frac{n}{q}}\left\| Du_{\lambda} \right\| _{L^p\left( \mathbb{R} ^n \right)}
+\left\| u \right\| _{L^{p^*}\left( \mathbb{R} ^n \right)}\le C\left\| Du \right\| _{L^p\left( \mathbb{R} ^n \right)}
 $$
 for all $u\in C_c^1(\mathbb{R}^n)$.
 \end{theorem}
@@ -646,7 +646,7 @@ $$
 $$
 This completes the proof of the theorem.
 \end{proof}
-\begin{theorem}
+\begin{theorem}\label{Thm4.6.3}
 Let $U$ be a bounded, open subset of $\mathbb{R}^n$, and suppose $\partial U$ is $C^1$. Assume $1\le p<n$, and $u\in W^{1,p}(U)$. Then $u\in L^{p^*}(U)$, with the estimate 
 $$
 \left\| u \right\| _{L^{p^*}\left( U \right)}\le C\left\| u \right\| _{W^{1,p}\left( U \right)},
@@ -699,4 +699,193 @@ provided $1\le q\le p^*$.
 \end{proof}
 \begin{note}\em
 The estimate \eqref{4.6} is sometimes called the \textbf{Poincare's inequality}. In view of this estimate, on $W_0^{1,p}(U)$ the norm $\|Du\|_{L^p(U)}$ is equivalent to $\|u\|_{W^{1,p}(U)}$ if $U$ is bounded.
+\end{note}
+We next assume that $p=n$. Owing to Theorem \ref{Thm4.6.2} and the fact that $p^*\to\infty$ when $p=n$, we may expect $u\in L^\infty(U)$ provided $u\in W^{1,n}(U)$. However, this is false. Consider the counter-example 
+$$
+u=\log \left[ \log \left( 1+\frac{1}{\left| x \right|} \right) \right] \in W^{1,n}\left( U \right) \setminus L^{\infty}\left( U \right) .
+$$
+We shall return to this borderline situation in the future topics.\par
+Now let's suppose $n<p<\infty$. We will show that if $u\in W^{1,p}(U)$, then $u$ is in fact Holder continuous, after possibly being redefined on a set of measure zero.
+\begin{theorem}{\textbf{(Morrey's inequality)}}\label{Thm4.6.5}
+Assume $n<p\le\infty$. Then there exists a constant $C$, depending only on $p$ and $n$, such that 
+$$
+\left\| u \right\| _{C^{0,\gamma}\left( \mathbb{R} ^n \right)}\le C\left\| u \right\| _{W^{1,p}\left( \mathbb{R} ^n \right)}
+$$
+for all $u\in C^1(\mathbb{R}^n)$, where $\gamma=1-n/p$.
+\end{theorem}
+\begin{proof}
+We first claim that there exists a constant $C$, depending only on $n$, such that 
+\begin{equation}\label{4.7}
+\fint_{B\left( x,r \right)}{\left| u\left( y \right) -u\left( x \right) \right|\mathrm{d}y}\le C\int_{B\left( x,r \right)}{\frac{\left| Du\left( y \right) \right|}{\left| y-x \right|^{n-1}}\mathrm{d}y}.
+\end{equation}
+To see this, we fix $w\in\partial B(0,1)$ and note that 
+$$
+\int_{\partial B\left( 0,1 \right)}{\left| u\left( x+sw \right) -u\left( x \right) \right|\mathrm{d}S\left( w \right)}=\frac{1}{s^{n-1}}\int_{\partial B\left( x,s \right)}{\left| u\left( z \right) -u\left( x \right) \right|\mathrm{d}S\left( z \right)}
+$$
+by a substitution, we therefore have the estimate 
+$$
+\begin{aligned}
+\int_{B\left( x,r \right)}{\left| u\left( y \right) -u\left( x \right) \right|\mathrm{d}y}&\le \int_0^r{\int_{\partial B\left( x,s \right)}{\left| u\left( z \right) -u\left( x \right) \right|\mathrm{d}S\left( z \right)}\mathrm{d}s}=\int_0^r{s^{n-1}\mathrm{d}s\int_{\partial B\left( 0,1 \right)}{\left| u\left( x+sw \right) -u\left( x \right) \right|\mathrm{d}S\left( w \right)}}
+\\
+&=\frac{r^n}{n}\int_{\partial B\left( 0,1 \right)}{\left| u\left( x+sw \right) -u\left( x \right) \right|\mathrm{d}S\left( w \right)}=\frac{r^n}{n}\int_{\partial B\left( 0,1 \right)}{\left| \int_0^s{\frac{\mathrm{d}}{\mathrm{d}t}u\left( x+tw \right) \mathrm{d}t} \right|\mathrm{d}S\left( w \right)}
+\\
+&=\frac{r^n}{n}\int_{\partial B\left( 0,1 \right)}{\left| \int_0^s{w\cdot Du\left( x+tw \right) \mathrm{d}t} \right|\mathrm{d}S\left( w \right)}\le \frac{r^n}{n}\int_{\partial B\left( 0,1 \right)}{\int_0^s{\left| Du\left( x+tw \right) \right|\mathrm{d}t}\mathrm{d}S\left( w \right)}
+\\
+&=\frac{r^n}{n}\int_0^s{\int_{\partial B\left( 0,1 \right)}{\left| Du\left( x+tw \right) \right|\mathrm{d}S\left( w \right) \mathrm{d}t}}=\frac{r^n}{n}\int_0^s{\int_{\partial B\left( x,t \right)}{\frac{\left| Du\left( y \right) \right|}{t^{n-1}}\mathrm{d}S\left( y \right) \mathrm{d}t}}
+\\
+&=\frac{r^n}{n}\int_{B\left( x,s \right)}{\frac{\left| Du\left( y \right) \right|}{\left| x-y \right|^{n-1}}\mathrm{d}y}\le \frac{r^n}{n}\int_{B\left( x,t \right)}{\frac{\left| Du\left( y \right) \right|}{\left| x-y \right|^{n-1}}\mathrm{d}y},
+\end{aligned}
+$$
+which is 
+$$
+\frac{n}{r^n}\int_{B\left( x,r \right)}{\left| u\left( y \right) -u\left( x \right) \right|\mathrm{d}y}=\fint_{B\left( x,r \right)}{\left| u\left( y \right) -u\left( x \right) \right|\mathrm{d}y}\le \int_{B\left( x,t \right)}{\frac{\left| Du\left( y \right) \right|}{\left| x-y \right|^{n-1}}\mathrm{d}y}.
+$$
+Now fix $x\in\mathbb{R}^n$. We apply the inequality \eqref{4.7} to obtain that 
+$$
+\begin{aligned}
+\left| u\left( x \right) \right|&\le \fint_{B\left( x,1 \right)}{\left| u\left( x \right) -u\left( y \right) \right|\mathrm{d}y}+\fint_{B\left( x,1 \right)}{\left| u\left( y \right) \right|\mathrm{d}y}
+\\
+&\le \fint_{B\left( x,1 \right)}{\frac{\left| Du\left( y \right) \right|}{\left| x-y \right|^{n-1}}\mathrm{d}y}+C\left\| u \right\| _{L^p\left( B\left( x,1 \right) \right)}
+\\
+&\le C\left( \int_{\mathbb{R} ^n}{\left| Du \right|^p\mathrm{d}y} \right) ^{\frac{1}{p}}\left( \int_{B\left( x,1 \right)}{\frac{\mathrm{d}y}{\left| x-y \right|^{\frac{\left( n-1 \right) p}{p-1}}}} \right) ^{\frac{p-1}{p}}+C\left\| u \right\| _{L^p\left( \mathbb{R} ^n \right)}
+\\
+&\le C\left( \left\| Du \right\| _{L^p\left( \mathbb{R} ^n \right)}+\left\| u \right\| _{L^p\left( \mathbb{R} ^n \right)} \right) =C\left\| u \right\| _{W^{1,p}\left( \mathbb{R} ^n \right)}.
+\end{aligned}
+$$
+Furthermore, choose $x,y\in\mathbb{R}^n$, define $r=|x-y|$ and $W=B(x,r)\cap B(y,r)$, we have 
+$$
+\begin{aligned}
+\left| u\left( x \right) -u\left( y \right) \right|&\le \fint_W{\left| u\left( x \right) -u\left( z \right) \right|\mathrm{d}z}+\fint_W{\left| u\left( z \right) -u\left( y \right) \right|\mathrm{d}z}
+\\
+&\le C_0\fint_{B\left( x,r \right)}{\left| u\left( x \right) -u\left( z \right) \right|\mathrm{d}z}+C_0\fint_{B\left( y,r \right)}{\left| u\left( z \right) -u\left( y \right) \right|\mathrm{d}z}
+\\
+&\le C_0\int_{B\left( x,r \right)}{\frac{\left| Du\left( z \right) \right|}{\left| x-z \right|^{n-1}}\mathrm{d}z}+C_0\int_{B\left( y,r \right)}{\frac{\left| Du\left( z \right) \right|}{\left| z-y \right|^{n-1}}\mathrm{d}z}
+\\
+&\le C_0\left( \int_{B\left( x,r \right)}{\left| Du\left( z \right) \right|^p\mathrm{d}z} \right) ^{\frac{1}{p}}\left( \int_{B\left( x,r \right)}{\frac{\mathrm{d}y}{\left| x-y \right|^{\frac{\left( n-1 \right) p}{p-1}}}} \right) ^{\frac{p-1}{p}}+C_0\left( \int_{B\left( y,r \right)}{\left| Du\left( z \right) \right|^p\mathrm{d}z} \right) ^{\frac{1}{p}}\left( \int_{B\left( y,r \right)}{\frac{\mathrm{d}y}{\left| x-y \right|^{\frac{\left( n-1 \right) p}{p-1}}}} \right) ^{\frac{p-1}{p}}
+\\
+&\le 2C_0\left( r^{n-\left( n-1 \right) \frac{p}{p-1}} \right) ^{\frac{p-1}{p}}\left\| Du \right\| _{L^p\left( \mathbb{R} ^n \right)}
+\\
+&=Cr^{1-\frac{n}{p}}\left\| Du \right\| _{L^p\left( \mathbb{R} ^n \right)},
+\end{aligned}
+$$
+therefore 
+$$
+\left\| u \right\| _{C^{0,\gamma}\left( \mathbb{R} ^n \right)}=\left\| u \right\| _{C\left( \mathbb{R} ^n \right)}+\left[ u \right] _{C^{0,\gamma}\left( \mathbb{R} ^n \right)}=\mathop {\mathrm{sup}} \limits_{x\in \mathbb{R} ^n}\left| u\left( x \right) \right|+\mathop {\mathrm{sup}} \limits_{x\ne y}\left\{ \frac{\left| u\left( x \right) -u\left( y \right) \right|}{\left| x-y \right|^{1-\frac{n}{p}}} \right\} \le C_1\left\| u \right\| _{W^{1,p}\left( \mathbb{R} ^n \right)}+C_2\left\| Du \right\| _{L^p\left( \mathbb{R} ^n \right)}\le C\left\| u \right\| _{W^{1,p}\left( \mathbb{R} ^n \right)},
+$$
+which finished the proof.
+\end{proof}
+\begin{note}\em
+A slight variant of the proof above provides the estimate 
+$$
+\left| u\left( y \right) -u\left( x \right) \right|\le Cr^{1-\frac{n}{p}}\left( \int_{B\left( x,2r \right)}{\left| Du\left( z \right) \right|^p\mathrm{d}z} \right) ^{\frac{1}{p}}
+$$
+for all $u\in C^1(B(x,2r))$, $y\in B(x,r)$, $n<p<\infty$. By an approximation the same bound is valid for $u\in W^{1,p}(B(x,2r))$, $n<p<\infty$. We will use this inequality in the future. This estimate is indeed valid if on the right hand side we integrate over $B(x,r)$, but the proof is a little bit trickier.
+\end{note}
+We say $u^*$ is a \textbf{version} of a given function $u$ provided $u=u^*$ almost everywhere.
+\begin{theorem}\label{Thm4.6.6}
+Let $U$ be a bounded, open subset of $\mathbb{R}^n$, and suppose that $\partial U$ is $C^1$. Assume $n<p\le\infty$ and $u\in W^{1,p}(U)$. Then $u$ has a version $u^*\in C^{0,\gamma}(\overline{U})$, for $\gamma=1-n/p$, with the estimate 
+$$
+\left\| u^* \right\| _{C^{0,\gamma}(\overline{U})}\le C\left\| u \right\| _{W^{1,p}\left( U \right)},
+$$
+here $\gamma=1-n/p$. The constant $C$ depends only on $p$, $n$ and $U$.
+\end{theorem}
+\begin{proof}
+We shall assume $n<p<\infty$ and the condition $p=\infty$ is easily proved directly. Since $\partial U$ is $C^1$, we may apply the extension functional and define $\overline{u}=Eu$ such that $\overline{u}$ is defined on $\mathbb{R}^n$, coincides with $u$ on $U$, has a compact support and 
+$$
+\left\| \overline{u} \right\| _{W^{1,p}\left( \mathbb{R} ^n \right)}\le C\left\| u \right\| _{W^{1,p}\left( U \right)}.
+$$
+Now we may use a sequence of $C_c^\infty(\mathbb{R}^n)$ functions to approximate $\overline{u}$. Suppose $u_m\in C_c^\infty(\mathbb{R}^n)$ such that $u_m\to \overline{u}$ in $W^{1,p}(\mathbb{R}^n)$, then by the preceding inequalities we have 
+$$
+\left\| u_m-u_n \right\| _{C^{0,\gamma}\left( \mathbb{R} ^n \right)}\le C\left\| u_m-u_n \right\| _{W^{1,p}\left( \mathbb{R} ^n \right)}
+$$
+for some constant $C$, and hence $u_m\to u^*$ in $C^{0,\gamma}(\mathbb{R}^n)$. By the preceding discussion we have $u^*$ is a version of $u$ on $U$, and 
+$$
+\left\| u^* \right\| _{C^{0,\gamma}\left( \mathbb{R} ^n \right)}\le C_0\left\| \overline{u} \right\| _{W^{1,p}\left( \mathbb{R} ^n \right)}\le C\left\| u \right\| _{W^{1,p}\left( U \right)}.
+$$
+This inequality completes the proof of the theorem.
+\end{proof}
+We can now concatenate the estimates established in Theorem \ref{Thm4.6.2} and Theorem \ref{Thm4.6.5} to obtain more complicated inequalities.
+\begin{theorem}{\textbf{(General Sobolev inequalities)}}
+Let $U$ be a bounded open subset of $\mathbb{R}^n$, with a $C^1$ boundary. Assume $u\in W^{k,p}(U)$.\par
+(i) If $k<n/p$, then $u\in L^q(U)$, where $\frac{1}{q}=\frac{1}{p}-\frac{1}{n}$. We have in addition the estimate 
+\begin{equation}\label{4.8}
+\left\| u \right\| _{L^q\left( U \right)}\le C\left\| u \right\| _{W^{k,p}\left( U \right)},
+\end{equation}
+the constant $C$ depending only on $k$, $p$, $n$ and $U$.\par
+(ii) If $k>n/p$, then $u\in C^{k-[n/p]-1,\gamma}(\overline{U})$, where 
+$$
+\gamma =\left\{ \begin{aligned}
+	\left[ \frac{n}{p} \right] +1-\frac{n}{p}&,\frac{n}{p}\notin \mathbb{Z} ,\\
+	\text{any positive number}\ <1&,\frac{n}{p}\in \mathbb{Z} .\\
+\end{aligned} \right. 
+$$
+We have in addition the estimate 
+$$
+\left\| u \right\| _{C^{k-\left[ \frac{n}{p} \right] -1,\gamma}(\overline{U})}\le C\left\| u \right\| _{W^{k,p}\left( U \right)},
+$$
+the constant $C$ depending only on $k$, $p$, $n$, $\gamma$ and $U$.
+\end{theorem}
+\begin{proof}
+(i) Assume $k<n/p$. Since the boundary of $U$ is in $C^1$, we may consider the extension functional and define $\overline{u}=Eu$ with several properties stated as in Theorem \ref{Thm4.6.6}. Therefore use the inequality stated in Theorem \ref{Thm4.6.2} repeatedly, we obtain 
+$$
+\left\| \overline{u} \right\| _{L^q\left( U \right)}\le C\left\| D\overline{u} \right\| _{L^{q^{\prime}}\left( U \right)}\le C^2\left\| \Delta \overline{u} \right\| _{L^{q^{\prime\prime}}\left( U \right)}\le \cdots \le C^{k-1}\left\| D^{\beta}\overline{u} \right\| _{L^{p^*}\left( U \right)}\le C^k\left\| D^{\alpha}\overline{u} \right\| _{L^p\left( U \right)}\le C \left\| \overline{u} \right\| _{W^{k,p}\left( U \right)},
+$$
+where $(p^*)^\prime=p$. Therefore $u\in L^q(U)$ with inequality \eqref{4.8}.\par
+(ii) Suppose $n/p$ is not an integer. Then as above we see $u\in W^{k-l,r}(U)$ with $\frac{1}{r}=\frac{1}{p}-\frac{l}{n}$, provided $lp<n$. We choose the integer $l$ so that 
+$$l<\frac{n}{p}<l+1,$$
+that is, $l=[n/p]$. Consequently apply Theorem \ref{Thm4.6.5} we have the stated estimate. The condition when $n/p$ is an integer follows analogously.
+\end{proof}
+\subsection{Compactness}
+We have seen in Section \ref{Sec4.6} that when $1\le p<n$, the Sobolev space $W^{1,p}(U)$ may be embedded into $L^{p^*}(U)$, where $p^*=\frac{np}{n-p}$. In this section, we will further demonstrate that $W^{1,p}(U)$ is in fact \textbf{compactly} embedded in $L^q(U)$ for all $1\le q<p^*$. This compactness will be fundamental for our applications of linear and nonlinear functional analysis to PDE in the future sections.
+\begin{definition}
+Let $X$ and $Y$ be Banach spaces, $X\subset Y$. We say that $X$ is \textbf{compactly embedded} in $Y$, written $X\subset\subset Y$, provided \par
+(i) $\|u\|_Y\large C\|u\|_X$ ($u\in X$) for some constant $C$,\par
+(ii) each bounded sequence in $X$ is precompact in $Y$.
+\end{definition}
+\begin{note}\em
+The condition (ii) may be stated more precisely as follows: Suppose $\{u_k\}_{k=1}^\infty$ is a sequence in $X$ with $\sup_k\|u_k\|_X<\infty$, then some subsequence $\{u_{k_j}\}_{j=1}^\infty\subset\{u_k\}_{k=1}^\infty$ converges in $Y$ to some limit $u$: 
+$$\lim_{j\to\infty}\|u_{k_j}-u\|_Y=0.$$
+\end{note}
+\begin{theorem}{\textbf{(Rellich-Kondrachov Compactness Theorem)}}
+Assume $U$ is a bounded open subset of $\mathbb{R}^n$ and $\partial U$ is $C^1$. Suppose $1\le p<n$, then $W^{1,p}(U)\subset\subset L^q(U)$ for each $1\le q<p^*$.
+\end{theorem}
+\begin{proof}
+By Theorem \ref{Thm4.6.3} and the fact that $U$ is bounded, we may obtain 
+$$
+\left\| u \right\| _{L^q\left( U \right)}\le C\left\| u \right\| _{W^{1,p}\left( U \right)},
+$$
+whence $W^{1,p}(U)\subset L^q(U)$. Now it suffices to show that the embedding is compact. Suppose $\{u_m\}_{m=1}^\infty$ is a bounded sequence in $W^{1,p}(U)$, we shall show that there exists a subsequence $\{u_{m_j}\}_{j=1}^\infty$ such that converges into $L^q(U)$.\par
+We may first make some assumptions. First, we may assume that $U=\mathbb{R}^n$ by the extension functional and $u_m$ are supported on $V\supset\supset U$. Furthermore we shall assume that $u_m\in C^\infty(V)$. To do this, we use the techniques in Appendix \ref{Appen.A} and consider the functions $u_m^\varepsilon=\eta_\varepsilon*u_m$. We claim that $u_m^\varepsilon\to u_m$ in $L^q(V)$ as $\varepsilon\to 0$ uniformly in $m$. To see this, we note the following estimates: 
+$$
+\begin{aligned}
+\left\| u_{m}^{\varepsilon}-u_m \right\| _{L^1\left( V \right)}&=\int_V{\left| u_{m}^{\varepsilon}\left( x \right) -u_m\left( x \right) \right|\mathrm{d}x}=\int_V{\left| \frac{1}{\varepsilon ^n}\int_{B\left( x,\varepsilon \right)}{\eta \left( \frac{x-z}{\varepsilon} \right) \left( u_m\left( z \right) -u_m\left( x \right) \right) \mathrm{d}z} \right|\mathrm{d}x}
+\\
+&=\int_V{\left| \int_{B\left( 0,1 \right)}{\eta \left( y \right) \left( u_m\left( x-\varepsilon y \right) -u_m\left( x \right) \right) \mathrm{d}y} \right|\mathrm{d}z}=\int_V{\left| \int_{B\left( 0,1 \right)}{\eta \left( y \right) \left( \int_0^1{\frac{\mathrm{d}}{\mathrm{d}t}u_m\left( x-\varepsilon ty \right) \mathrm{d}t} \right) \mathrm{d}y} \right|\mathrm{d}z}
+\\
+&=\varepsilon \int_V{\left| \int_{B\left( 0,1 \right)}{\eta \left( y \right) \int_0^1{y\cdot Du_m\left( x-\varepsilon ty \right) \mathrm{d}t}\mathrm{d}y} \right|\mathrm{d}z}\le \varepsilon \int_V{\int_{B\left( 0,1 \right)}{\eta \left( y \right) \int_0^1{\left| y \right|\cdot \left| Du_m\left( x-\varepsilon ty \right) \right|\mathrm{d}t}\mathrm{d}y}\mathrm{d}z}
+\\
+&\le \varepsilon \int_V{\int_{B\left( 0,1 \right)}{\eta \left( y \right) \int_0^1{\left| Du_m\left( x-\varepsilon ty \right) \right|\mathrm{d}t}\mathrm{d}y}\mathrm{d}z}\le \varepsilon \int_V{\left| Du_m\left( z \right) \right|\mathrm{d}z}.
+\end{aligned}
+$$
+Therefore 
+$$
+\left\| u_{m}^{\varepsilon}-u_m \right\| _{L^q\left( V \right)}\le \left\| u_{m}^{\varepsilon}-u_m \right\| _{L^1\left( V \right)}^{\theta}\cdot \left\| u_{m}^{\varepsilon}-u_m \right\| _{L^{p^*}\left( V \right)}^{1-\theta}\le C\left\| u_{m}^{\varepsilon}-u_m \right\| _{L^1\left( V \right)}^{\theta},
+$$
+where the first inequality follows from the interpolation inequality with $0<\theta<1$, and the second inequality follows from Theorem \ref{Thm4.6.2}.\par
+Next we claim that for each fixed $\varepsilon>0$, the sequence $\{u_m^\varepsilon\}_{m=1}^\infty$ is uniformly bounded and equicontinuous. Indeed, for each $x\in\mathbb{R}^n$, we have the following estimates: 
+$$
+\left| u_{m}^{\varepsilon}\left( x \right) \right|=\left| \int_{B\left( x,\varepsilon \right)}{\eta \left( x-y \right) u_m\left( y \right) \mathrm{d}y} \right|\le \int_{B\left( x,\varepsilon \right)}{\eta \left( x-y \right) \left| u_m\left( y \right) \right|\mathrm{d}y}\le \left\| \eta _{\varepsilon} \right\| _{L^{\infty}\left( \mathbb{R} ^n \right)}\cdot \left\| u_m \right\| _{L^1\left( V \right)}\le \frac{C}{\varepsilon ^n}<\infty ,
+$$
+and 
+$$
+\left| Du_{m}^{\varepsilon}\left( x \right) \right|=\left| \int_{B\left( x,\varepsilon \right)}{D\eta \left( x-y \right) u_m\left( y \right) \mathrm{d}y} \right|\le \int_{B\left( x,\varepsilon \right)}{\left| D\eta \left( x-y \right) \right|\cdot \left| u_m\left( y \right) \right|\mathrm{d}y}\le \left\| D\eta _{\varepsilon} \right\| _{L^{\infty}\left( \mathbb{R} ^n \right)}\cdot \left\| u_m \right\| _{L^1\left( V \right)}\le \frac{C}{\varepsilon ^{n+1}}<\infty ,
+$$
+whence the assertion that $\{u_m\}_{m=1}^\infty$ is uniformly bounded and equicontinuous holds. Now by Arzela-Ascoli's Theorem there exists some subsequences $\{u_{m_j}^\varepsilon\}_{j=1}^\infty$ such that $\|u_{m_j}^\varepsilon-u_{m_k}^\varepsilon\|_{L^q(V)}<\delta/3$ for an arbitrarily fixed $\delta>0$. Note that we may choose $\varepsilon>0$ small enough such that $\|u_m^\varepsilon-u_m\|<\delta/3$, therefore 
+$$
+\left\| u_{m_j}-u_{m_k} \right\| _{L^q\left( V \right)}\le \left\| u_{m_j}-u_{m_j}^{\varepsilon} \right\| _{L^q\left( V \right)}+\left\| u_{m_j}^{\varepsilon}-u_{m_k}^{\varepsilon} \right\| _{L^q\left( V \right)}+\left\| u_{m_k}^{\varepsilon}-u_{m_k} \right\| _{L^q\left( V \right)}<\frac{\delta}{3}+\frac{\delta}{3}+\frac{\delta}{3}=\delta ,
+$$
+hence let $\delta\to 0^+$, we have $\{u_{m_j}\}_{j=1}^\infty$ converges in $L^q(V)$, which finished the proof.
+\end{proof}
+\begin{note}\em
+Observe that $p^*>p$ and $p^*\to\infty$ as $p\to n$, we have in particular $W^{1,p}(U)\subset\subset L^p(U)$ for all $1\le p\le\infty$. Observe that if $n<p\le\infty$, then a similar argument with Morrey's inequality asserts an analogous result when $n<p\le\infty$. Note also that $W_0^{1,p}(U)\subset\subset L^p(U)$, even if we do not assume $\partial U$ to be $C^1$.
 \end{note}
